@@ -150,10 +150,12 @@ body {
 
 @keyframes side-content-img {
   0% {
-    transform: translateX(600px);
+    opacity: 1;
+    transform: translateY(850px);
   }
   100% {
-    transform: translateX(0px);
+    opacity: 1;
+    transform: translateY(0px);
   }
 }
 
@@ -165,7 +167,7 @@ body {
 }
 
 .loader {
-  background: rgb(170, 54, 170);
+  background: white;
   width: 100%;
   height: 100%;
   display: flex;
@@ -184,17 +186,19 @@ body {
   border-radius: 0 80px 0 0;
   transform: translateY(100%);
   animation-name: footer;
-  animation-duration: 0.5s;
-  animation-delay: 2.5s;
+  animation-duration: 2s;
+  animation-delay: 2s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
 }
 
 @keyframes footer {
   0% {
-    transform: translateY(100%);
+    opacity: 1;
+    transform: translateY(320px);
   }
   100% {
+    opacity: 1;
     transform: translateY(0px);
   }
 }
@@ -223,7 +227,7 @@ body {
 }
 
 .loader div {
-  background: lightcoral;
+  background: var(--blue);
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -271,11 +275,16 @@ body {
 } */
 
 @keyframes scaling {
-  0%,
-  100% {
+  0% {
+    transform: scale(0.2);
+  }
+  40% {
     transform: scale(1);
   }
   50% {
+    transform: scale(1);
+  }
+  100% {
     transform: scale(0.2);
   }
 }
@@ -289,46 +298,56 @@ body {
 }
 
 .modal {
-  width: 100%;
+  background: rgb(0, 0, 0, 0.5);
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  place-items: center;
   position: absolute;
+  width: 100%;
   z-index: 4;
-  display: grid;
-  place-items: center;
 }
-
 .modal__content {
-  background: whitesmoke;
-  width: 50%;
-  height: 50%;
+  align-items: center;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  width: 40%;
+  height: 55%;
   border-radius: 15px;
-  display: grid;
-  place-items: center;
 }
 
 .modal__content__close {
   cursor: pointer;
-  place-self: end;
-  align-self: start;
+  position: absolute;
+  right: 10px;
+  top: 10px;
 }
 
 .modal__content__slider {
+  height: 280px;
+  margin-bottom: 60px;
+  transform-origin: preserve-3d;
   width: 300px;
-  height: 200px;
-  transform-style: preserve-3d;
 }
 
 .btn-modal {
-  box-sizing: border-box;
-  padding: 5px 10px;
-  border: 3px solid var(--blue);
+  width: 250px;
+  height: 50px;
+  border: none;
   background: var(--red);
-  font-size: 1rem;
   color: white;
-  border-radius: 20px;
-  margin: 20px 0 0 0;
+  font-size: 1.8rem;
+  border-radius: 3px;
   cursor: pointer;
+}
+
+.btn-modal:hover {
+  background: var(--blue);
+}
+
+input[type="radio"] {
+  visibility: hidden;
 }
 
 .cards {
@@ -338,22 +357,22 @@ body {
 }
 
 .card {
-  width: 50%;
-  height: 100%;
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  transition: transform 0.5s ease;
+  background: var(--yellow);
   cursor: pointer;
   display: grid;
+  height: 100%;
+  left: 0;
+  margin: 0 auto;
   place-items: center;
-  background: var(--yellow);
+  position: absolute;
+  right: 0;
+  transition: transform 0.5s ease;
+  width: 80%;
+  user-select: none;
 }
 
 .cards img {
-  width: 100%;
-  height: 100%;
+  width: 90%;
 }
 
 #radio1:checked ~ .cards #card1,
@@ -378,8 +397,4 @@ body {
   transform: translateX(-40%) scale(0.8);
   opacity: 0.5;
   z-index: 0;
-}
-
-input[type="radio"] {
-  visibility: hidden;
 }
